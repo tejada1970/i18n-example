@@ -37,5 +37,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # Installation and configuration:
 
-## To access the description of the installation and configuration of the project, click on the EN or ES pdf attached to the project files.
+## You could access the description of the installation and configuration of the project through the folder (public/pdf/) where the pdfs are in ES and EN.
 
