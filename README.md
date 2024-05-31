@@ -68,7 +68,7 @@ en.json
 
 ## Configuration in next.config.mjs:
 
-replace all existing content with this other one:
+**replace all existing content with this other one:**
 
 import createNextIntlPlugin from 'next-intl/plugin';
  
@@ -81,7 +81,7 @@ export default withNextIntl(nextConfig);
 
 ## Create i18n.ts file inside /src folder
 
-Inside the i18n.ts file put this code:
+**Inside the i18n.ts file put this code:**
 
 import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
@@ -98,14 +98,13 @@ export default getRequestConfig(async ({locale}) => {
   };
 });
 
+**IMPORTANT:**
 
-IMPORTANT:
-
-in this line: const local = ['en', 'es']; replace ed with es
+**In this line: const local = ['en', 'es']; replace ed with es**
 
 ## Create middleware.ts file inside /src folder
 
-Inside the middleware.ts file put this code:
+**Inside the middleware.ts file put this code:**
 
 import createMiddleware from 'next-intl/middleware';
  
@@ -123,29 +122,27 @@ export const config = {
 };
 
 
-IMPORTANT:
+**IMPORTANT:**
 
-in this line: local: ['en', 'es'], replace by es
+**In this line: local: ['en', 'es'], replace by es**
 
-in this line: defaultLocale: 'en' replace en with es
+**In this line: defaultLocale: 'en' replace en with es**
 
-in this line: matcher: ['/', '/(es|en)/:path*'] replace de with es
+In this line: matcher: ['/', '/(es|en)/:path*'] replace de with es**
 
-## Create [locale] folder inside /src/app folder
+## Create [locale] folder inside /src/app folder and Drag the 'layout.tsx' and 'page.tsx' files from the /src/app folder into the /src/app/[locale] folder
 
-## Drag the 'layout.tsx' and 'page.tsx' files from the /src/app folder into the /src/app/[locale] folder
+**In app/[locale]/layout.tsx:**
 
-## In app/[locale]/layout.tsx:
-
-1 - Add this parameter and its type:
+1. Add this parameter and its type:
 
 params: {locale}
 
 params: {locale: string};
 
-2 - Modify this: import "./globals.css"; for this other import "@/app/globals.css";
+2. Modify this: import "./globals.css"; for this other import "@/app/globals.css";
 
-3 - Modify the lang attribute of the html document: <html lang='en'> to <html lang={locale}>
+```3. Modify the lang attribute of the html document: <html lang='en'> to <html lang={locale}>
 
 The 'layout.tsx' file should look like this:
 
@@ -161,7 +158,7 @@ export const metadata: Metadata = {
   description: "Example i18n width Next.js 14 and TS",
 };
 
-export default function RootLayout({
+```export default function RootLayout({
   children,
   params: {locale}
 }: Readonly<{
@@ -177,17 +174,17 @@ export default function RootLayout({
 
 ## In app/[locale]/page.tsx:
 
-1 - import: import {useTranslations} from 'next-intl';
+1. import: import {useTranslations} from 'next-intl';
 
-2 - create constant inside the body of the component: const t = useTranslations('Index'); // access our en.json 'Index' and es.json 'Index'
+2. create constant inside the body of the component: const t = useTranslations('Index'); // access our en.json 'Index' and es.json 'Index'
 
-3 - we bring the 'title' of our .json and show it this way <h1>{t('title')}</h1>;
+3. we bring the 'title' of our .json and show it this way <h1>{t('title')}</h1>;
 
-The 'page.tsx' file should look like this:
+**The 'page.tsx' file should look like this:**
 
 import {useTranslations} from 'next-intl';
 
-export default function Home() {
+```export default function Home() {
 
   const t = useTranslations('Index');
 
@@ -200,19 +197,11 @@ export default function Home() {
 
 ## TO MAKE CHANGES:
 
-If you want to modify the names of the objects and properties of the .json files you must do it this way.
+**If you want to modify the names of the objects and properties of the .json files you must do it this way.**
 
-For example, we change the name of the 'Index' object to 'Home' and the 'title' property to 'text':
+**For example, we change the name of the 'Index' object to 'Home' and the 'title' property to 'text':**
 
-1 - File en.json:
-
-{
-    "Home": {
-        "text": "Hello world!"
-    }
-}
-
-2 - es.json file:
+1. en.json file:
 
 {
     "Home": {
@@ -220,11 +209,19 @@ For example, we change the name of the 'Index' object to 'Home' and the 'title' 
     }
 }
 
-3 - Pages.tsx file:
+2. es.json file:
+
+{
+    "Home": {
+        "text": "Hello world!"
+    }
+}
+
+3. Pages.tsx file:
 
 import {useTranslations} from 'next-intl';
 
-export default function Home() {
+```export default function Home() {
 
   const t = useTranslations('Home');
 
@@ -237,13 +234,13 @@ export default function Home() {
 
 ## ADD PAGE NOT-FOUND:
 
-1 - create file not-found.tsx inside /src/app/[locale]
+1. create file not-found.tsx inside /src/app/[locale]
 
-2 - create the following code within the not-found.tsx file: (https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
+2. create the following code within the not-found.tsx file: (https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
 
 import Link from 'next/link'
  
-export default function NotFound() {
+```export default function NotFound() {
   return (
     <div className="min-h-screen flex gap-4 justify-center items-center text-xl">
       <h2>Page not found:</h2>
@@ -254,13 +251,13 @@ export default function NotFound() {
 
 ## CREATE 'header' COMPONENT:
 
-1 - create the /components folder inside the /src folder
+1. create the /components folder inside the /src folder
 
-2 - inside the /components folder create the Header.tsx file
+2. inside the /components folder create the Header.tsx file
 
-3 - inside the Header.tsx file create the code:
+3. inside the Header.tsx file create the code:
 
-const Header = () => {
+```const Header = () => {
   return (
     <header>
         Header text
@@ -270,12 +267,12 @@ const Header = () => {
 
 export default Header
 
-4 - add the 'Header' component to our 'Home' page:
+4. add the 'Header' component to our 'Home' page:
 
 import Header from '@/components/header';
 import {useTranslations} from 'next-intl';
 
-export default function Home() {
+```export default function Home() {
 
   const t = useTranslations('Home'); // access our en.json 'Index' and es.json 'Index' and bring the 'title' to display it like this <h1>{t('title')}</h1>;
 
@@ -287,11 +284,11 @@ export default function Home() {
   );
 }
 
-but the 'Header Text' is not translated.
+**But the 'Header Text' is not translated.**
 
 ## TRANSLATE 'HEADER TEXT' (COMPONENT):
 
-1 - File en.json:
+1. en.json file:
 
 {
     "Home": {
@@ -302,8 +299,7 @@ but the 'Header Text' is not translated.
     }
 }
 
-
-2 - es.json file:
+2. es.json file:
 
 {
     "Home": {
@@ -314,8 +310,7 @@ but the 'Header Text' is not translated.
     }
 }
 
-
-3 - header.tsx file:
+3. header.tsx file:
 
 "use client"
 
@@ -323,7 +318,7 @@ import {useTranslations} from 'next-intl';
 
 const Header = () => {
 
-const t = useTranslations('Header');
+```const t = useTranslations('Header');
 
   return (
     <header>
@@ -334,9 +329,9 @@ const t = useTranslations('Header');
 
 export default Header
 
-IMPORTANT:
+**IMPORTANT:**
 
-If we do this process the same as we did with 'Home', since it is a client-side component it will give us this error:
+**If we do this process the same as we did with 'Home', since it is a client-side component it will give us this error:**
 
 Error: Failed to call `useTranslations` because the context from `NextIntlClientProvider` was not found.
 
@@ -347,30 +342,30 @@ This can happen because:
 2) You intended to render this component on the client side, but no context was found.
    Learn more about this error here: https://next-intl-docs.vercel.app/docs/environments/server-client-components#missing-context
 
-It's because 'useTranslations' can only be used server-side.
+**It's because 'useTranslations' can only be used server-side.**
 
-To solve it we must do it this other way:
+**To solve it we must do it this other way:**
 
-1 - we copy from (https://next-intl-docs.vercel.app/docs/environments/server-client-components):
+1. we copy from (https://next-intl-docs.vercel.app/docs/environments/server-client-components):
 
 import pick from 'lodash/pick';
 import {NextIntlClientProvider, useMessages} from 'next-intl';
 
-2 - we add the imports to the file where we are going to use the component, in this case on the 'Home' page.
+2. we add the imports to the file where we are going to use the component, in this case on the 'Home' page.
 
-3 - we must install lodash
+3. we must install lodash
 npm i lodash
 npm i --save-dev @types/lodash
 
-4 - we surround our component with: NextIntlClientProvider and pass the messages to it: const messages = useMessages();
+4. we surround our component with: NextIntlClientProvider and pass the messages to it: const messages = useMessages();
 
-The 'Home' page should look like this:
+**The 'Home' page should look like this:**
 
 import pick from 'lodash/pick';
 import {useTranslations, NextIntlClientProvider, useMessages} from 'next-intl';
 import Header from '@/components/header';
 
-export default function Home() {
+```export default function Home() {
 
   const t = useTranslations('Home'); // access en.json 'Home' and es.json 'Home' and bring the 'text' to display it like this <h1>{t('text')}</h1>;
   const messages = useMessages();
@@ -385,6 +380,6 @@ export default function Home() {
   );
 }
 
-To pass all messages, replace: messages={pick(messages, 'Header')} with messages={messages} and comment // import pick from 'lodash/pick';
+**To pass all messages, replace: messages={pick(messages, 'Header')} with messages={messages} and comment // import pick from 'lodash/pick';**
 
 ## END DESCRIPTION
