@@ -174,7 +174,7 @@ export default function RootLayout({
     </html>
   );
 }
-
+```
 ## In app/[locale]/page.tsx:
 
 1. import:
@@ -186,7 +186,7 @@ export default function RootLayout({
     const t = useTranslations('Index'); // access our en.json 'Index' and es.json 'Index'
     
 3. we bring the 'title' of our .json and show it this way:
-    
+    ```
     <h1>{t('title')}</h1>;
     
 **The 'page.tsx' file should look like this:**
@@ -196,12 +196,13 @@ import {useTranslations} from 'next-intl';
 export default function Home() {
 
   const t = useTranslations('Index');
-
+   ```
   return (
    <div className="min-h-screen flex justify-center items-center text-2xl">
     <h1>{t('title')}</h1>;
    </div>
   );
+  ```
 }
 
 ## TO MAKE CHANGES:
@@ -265,7 +266,7 @@ export default function NotFound() {
 2. inside the /components folder create the Header.tsx file
 
 3. inside the Header.tsx file create the code:
-    
+    ```
     const Header = () => {
         return (
             <header>
@@ -379,7 +380,7 @@ export default function Home() {
 
   const t = useTranslations('Home'); // access en.json 'Home' and es.json 'Home' and bring the 'text' to display it like this <h1>{t('text')}</h1>;
   const messages = useMessages();
-
+```
   return (
     <div className="min-h-screen flex flex-col justify-center items-center text-2xl">
       <NextIntlClientProvider messages={pick(messages, 'Header')}>
