@@ -144,7 +144,7 @@ In this line: matcher: ['/', '/(es|en)/:path*'] replace de with es
     import "./globals.css"; for this other import "@/app/globals.css";
     
 3. Modify the lang attribute of the html document:
-    ```
+    
     <html lang='en'> to <html lang={locale}>
     
 **The 'layout.tsx' file should look like this:**
@@ -160,7 +160,7 @@ export const metadata: Metadata = {
   title: "Example i18n width Next.js 14 and TS",
   description: "Example i18n width Next.js 14 and TS",
 };
-```
+
 export default function RootLayout({
   children,
   params: {locale}
@@ -174,7 +174,7 @@ export default function RootLayout({
     </html>
   );
 }
-```
+
 ## In app/[locale]/page.tsx:
 
 1. import:
@@ -186,7 +186,7 @@ export default function RootLayout({
     const t = useTranslations('Index'); // access our en.json 'Index' and es.json 'Index'
     
 3. we bring the 'title' of our .json and show it this way:
-    ```
+    
     <h1>{t('title')}</h1>;
     
 **The 'page.tsx' file should look like this:**
@@ -196,16 +196,16 @@ import {useTranslations} from 'next-intl';
 export default function Home() {
 
   const t = useTranslations('Index');
-   ```
+   
   return (
    <div className="min-h-screen flex justify-center items-center text-2xl">
     <h1>{t('title')}</h1>;
    </div>
   );
-  ```
+  
 }
 
-## TO MAKE CHANGES:
+## To make changes:
 
 **If you want to modify the names of the objects and properties of the .json files you must do it this way.**
 
@@ -242,14 +242,14 @@ export default function Home() {
         );
     }
     
-## ADD PAGE NOT-FOUND:
+## Add page not-found:
 
 1. create file not-found.tsx inside /src/app/[locale]
 
 2. create the following code within the not-found.tsx file: (https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
 
 import Link from 'next/link'
- 
+
 export default function NotFound() {
   return (
     <div className="min-h-screen flex gap-4 justify-center items-center text-xl">
@@ -259,14 +259,14 @@ export default function NotFound() {
   )
 }
 
-## CREATE 'header' COMPONENT:
+## Create 'header' Component:
 
 1. create the /components folder inside the /src folder
 
 2. inside the /components folder create the Header.tsx file
 
 3. inside the Header.tsx file create the code:
-    ```
+    
     const Header = () => {
         return (
             <header>
@@ -296,7 +296,7 @@ export default function NotFound() {
     
 **But the 'Header Text' is not translated.**
 
-## TRANSLATE 'HEADER TEXT' (COMPONENT):
+## Traslate 'Header text' (Component):
 
 1. en.json file:
     
@@ -380,7 +380,7 @@ export default function Home() {
 
   const t = useTranslations('Home'); // access en.json 'Home' and es.json 'Home' and bring the 'text' to display it like this <h1>{t('text')}</h1>;
   const messages = useMessages();
-```
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center text-2xl">
       <NextIntlClientProvider messages={pick(messages, 'Header')}>
