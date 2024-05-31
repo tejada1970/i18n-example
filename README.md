@@ -37,7 +37,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # Installation and configuration:
 
-## You can access the description of the installation and configuration of the i18n through the folder (public/pdf/) where the pdfs in ES and EN are located.
+## You can access the description of the installation and configuration of the i18n through the folder (public/pdf/) where the pdfs in Spanish and English are located.
 
 
 ## Download and Configuration in Local Environment
