@@ -147,7 +147,6 @@ In this line: matcher: ['/', '/(es|en)/:path*'] replace de with es
     ```
     <html lang='en'> to <html lang={locale}>
     
-
 **The 'layout.tsx' file should look like this:**
 
 import { ReactNode } from "react";
@@ -161,7 +160,7 @@ export const metadata: Metadata = {
   title: "Example i18n width Next.js 14 and TS",
   description: "Example i18n width Next.js 14 and TS",
 };
-
+```
 export default function RootLayout({
   children,
   params: {locale}
@@ -169,7 +168,7 @@ export default function RootLayout({
   children: ReactNode;
   params: {locale: string};
 }>) {
-  ```return (
+  return (
     <html lang={locale}>
       <body className={inter.className}>{children}</body>
     </html>
@@ -186,12 +185,10 @@ export default function RootLayout({
     
     const t = useTranslations('Index'); // access our en.json 'Index' and es.json 'Index'
     
-
 3. we bring the 'title' of our .json and show it this way:
     
     <h1>{t('title')}</h1>;
     
-
 **The 'page.tsx' file should look like this:**
 
 import {useTranslations} from 'next-intl';
@@ -202,7 +199,7 @@ export default function Home() {
 
   return (
    <div className="min-h-screen flex justify-center items-center text-2xl">
-     <h1>{t('title')}</h1>;
+    <h1>{t('title')}</h1>;
    </div>
   );
 }
@@ -225,7 +222,7 @@ export default function Home() {
 
     {
         "Home": {
-            "text": "Hello world!"
+            "text": "Hola mundo!"
         }
     }
 
@@ -279,7 +276,6 @@ export default function NotFound() {
 
     export default Header
     
-
 4. add the 'Header' component to our 'Home' page:
     
     import Header from '@/components/header';
@@ -297,7 +293,6 @@ export default function NotFound() {
         );
     }
     
-
 **But the 'Header Text' is not translated.**
 
 ## TRANSLATE 'HEADER TEXT' (COMPONENT):
@@ -317,10 +312,10 @@ export default function NotFound() {
     
     {
         "Home": {
-            "text": "Hello world!"
+            "text": "Hola mundo!"
         },
         "Header": {
-            "text": "Header in Spanish"
+            "text": "Header en Español"
         }
     }
     
@@ -371,7 +366,6 @@ import {NextIntlClientProvider, useMessages} from 'next-intl';
     
     npm i lodash
     npm i --save-dev @types/lodash
-    
 
 4. we surround our component with: NextIntlClientProvider and pass the messages to it: const messages = useMessages();
 
