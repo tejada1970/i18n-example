@@ -128,23 +128,28 @@ export const config = {
 
 **In this line: defaultLocale: 'en' replace en with es**
 
-In this line: matcher: ['/', '/(es|en)/:path*'] replace de with es**
+**In this line: matcher: ['/', '/(es|en)/:path*'] replace de with es**
 
 ## Create [locale] folder inside /src/app folder and Drag the 'layout.tsx' and 'page.tsx' files from the /src/app folder into the /src/app/[locale] folder
 
 **In app/[locale]/layout.tsx:**
 
 1. Add this parameter and its type:
+    ```
+    params: {locale}
 
-params: {locale}
+    params: {locale: string};
+    ```
+2. Modify this:
+    ```
+    import "./globals.css"; for this other import "@/app/globals.css";
+    ```
+3. Modify the lang attribute of the html document:
+    ```
+    <html lang='en'> to <html lang={locale}>
+    ```
 
-params: {locale: string};
-
-2. Modify this: import "./globals.css"; for this other import "@/app/globals.css";
-
-```3. Modify the lang attribute of the html document: <html lang='en'> to <html lang={locale}>
-
-The 'layout.tsx' file should look like this:
+**The 'layout.tsx' file should look like this:**
 
 import { ReactNode } from "react";
 import type { Metadata } from "next";
@@ -174,11 +179,19 @@ export const metadata: Metadata = {
 
 ## In app/[locale]/page.tsx:
 
-1. import: import {useTranslations} from 'next-intl';
+1. import:
+    ```
+    import {useTranslations} from 'next-intl';
+    ```
+2. create constant inside the body of the component:
+    ```
+    const t = useTranslations('Index'); // access our en.json 'Index' and es.json 'Index'
+    ```
 
-2. create constant inside the body of the component: const t = useTranslations('Index'); // access our en.json 'Index' and es.json 'Index'
-
-3. we bring the 'title' of our .json and show it this way <h1>{t('title')}</h1>;
+3. we bring the 'title' of our .json and show it this way:
+    ```
+    <h1>{t('title')}</h1>;
+    ```
 
 **The 'page.tsx' file should look like this:**
 
@@ -202,36 +215,36 @@ import {useTranslations} from 'next-intl';
 **For example, we change the name of the 'Index' object to 'Home' and the 'title' property to 'text':**
 
 1. en.json file:
-
-{
-    "Home": {
-        "text": "Hello world!"
+    ```
+    {
+        "Home": {
+            "text": "Hello world!"
+        }
     }
-}
-
+    ```
 2. es.json file:
-
-{
-    "Home": {
-        "text": "Hello world!"
+    ```
+    {
+        "Home": {
+            "text": "Hello world!"
+        }
     }
-}
-
+    ```
 3. Pages.tsx file:
+    ```
+    import {useTranslations} from 'next-intl';
 
-import {useTranslations} from 'next-intl';
+        export default function Home() {
 
-```export default function Home() {
+        const t = useTranslations('Home');
 
-  const t = useTranslations('Home');
-
-  return (
-   <div className="min-h-screen flex justify-center items-center text-2xl">
-     <h1>{t('text')}</h1>
-   </div>
-  );
-}
-
+        return (
+        <div className="min-h-screen flex justify-center items-center text-2xl">
+            <h1>{t('text')}</h1>
+        </div>
+        );
+    }
+    ```
 ## ADD PAGE NOT-FOUND:
 
 1. create file not-found.tsx inside /src/app/[locale]
@@ -256,79 +269,81 @@ import Link from 'next/link'
 2. inside the /components folder create the Header.tsx file
 
 3. inside the Header.tsx file create the code:
+    ```
+    const Header = () => {
+    return (
+        <header>
+            Header text
+        </header>
+    );
+    }
 
-```const Header = () => {
-  return (
-    <header>
-        Header text
-    </header>
-  );
-}
-
-export default Header
+    export default Header
+    ```
 
 4. add the 'Header' component to our 'Home' page:
+    ```
+    import Header from '@/components/header';
+    import {useTranslations} from 'next-intl';
 
-import Header from '@/components/header';
-import {useTranslations} from 'next-intl';
+    export default function Home() {
 
-```export default function Home() {
+        const t = useTranslations('Home'); // access our en.json 'Index' and es.json 'Index' and bring the 'title' to display it like this <h1>{t('title')}</h1>;
 
-  const t = useTranslations('Home'); // access our en.json 'Index' and es.json 'Index' and bring the 'title' to display it like this <h1>{t('title')}</h1>;
-
-  return (
-   <div className="min-h-screen flex flex-col justify-center items-center text-2xl">
-    <Header />
-     <h1>{t('text')}</h1>
-   </div>
-  );
-}
+        return (
+            <div className="min-h-screen flex flex-col justify-center items-center text-2xl">
+                <Header />
+                <h1>{t('text')}</h1>
+            </div>
+        );
+    }
+    ```
 
 **But the 'Header Text' is not translated.**
 
 ## TRANSLATE 'HEADER TEXT' (COMPONENT):
 
 1. en.json file:
-
-{
-    "Home": {
-        "text": "Hello world!"
-    },
-    "Header": {
-        "text": "Header in English"
+    ```
+    {
+        "Home": {
+            "text": "Hello world!"
+        },
+        "Header": {
+            "text": "Header in English"
+        }
     }
-}
-
+    ```
 2. es.json file:
-
-{
-    "Home": {
-        "text": "Hello world!"
-    },
-    "Header": {
-        "text": "Header in Spanish"
+    ```
+    {
+        "Home": {
+            "text": "Hello world!"
+        },
+        "Header": {
+            "text": "Header in Spanish"
+        }
     }
-}
-
+    ```
 3. header.tsx file:
+    ```
+    "use client"
 
-"use client"
+    import {useTranslations} from 'next-intl';
 
-import {useTranslations} from 'next-intl';
+    const Header = () => {
 
-const Header = () => {
+        const t = useTranslations('Header');
 
-```const t = useTranslations('Header');
+        return (
+            <header>
+                <h1>{t('text')}</h1>
+            </header>
+        );
+    }
 
-  return (
-    <header>
-        <h1>{t('text')}</h1>
-    </header>
-  );
-}
-
-export default Header
-
+    export default Header
+    ```
 **IMPORTANT:**
 
 **If we do this process the same as we did with 'Home', since it is a client-side component it will give us this error:**
@@ -354,8 +369,10 @@ import {NextIntlClientProvider, useMessages} from 'next-intl';
 2. we add the imports to the file where we are going to use the component, in this case on the 'Home' page.
 
 3. we must install lodash
-npm i lodash
-npm i --save-dev @types/lodash
+    ```
+    npm i lodash
+    npm i --save-dev @types/lodash
+    ```
 
 4. we surround our component with: NextIntlClientProvider and pass the messages to it: const messages = useMessages();
 
