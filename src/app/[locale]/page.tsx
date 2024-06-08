@@ -1,6 +1,6 @@
 import pick from 'lodash/pick';
 import {useTranslations, NextIntlClientProvider, useMessages} from 'next-intl';
-import Header from '@/components/header';
+import Header from '@/components/Header';
 
 export default function Home() {
 
