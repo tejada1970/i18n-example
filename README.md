@@ -47,7 +47,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Descripción
 
-Puedes acceder a la descripción de la instalación y configuración de i18n a través de este enlace [public](pdf).
+Puedes acceder a la descripción de la instalación y configuración de i18n a través de este enlace: [Descripción de instalación y configuración de i18n](public/pdf/example-i18n.pdf).
 
 ## Uso
 
