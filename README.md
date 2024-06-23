@@ -35,40 +35,20 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-# Installation and configuration:
+## License
 
-## You can access the description of the installation and configuration of the i18n through the folder (public/pdf/) where the pdfs in Spanish and English are located.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Características
 
-## Download and Configuration in Local Environment
+**No utiliza base de datos**: Es importante señalar que este proyecto no cuenta con base de datos.
 
-### Requirements:
+**Requisitos del servidor**: Para su correcto funcionamiento el proyecto debe ejecutarse desde un servidor. Por ejemplo, se recomienda utilizar XAMPP u otro servidor local para alojar la aplicación. También se debe tener instalado Node.js en tu PC.
 
-**Have installed on your PC: Node.js and a local server of your choice (XAMPP is recommended).**
+## Descripción
 
-### Steps:
+Puedes acceder a la descripción de la instalación y configuración de example-i18n a través de este enlace [public](pdf).
 
-1. **Download the Project:**
-Click the "Code" button in this repository and select "Download ZIP".
+## Uso
 
-2. **Project Extraction:**
-Create a new folder on your desktop.
-Go to the downloads folder and drag the downloaded ZIP file to the new folder to extract it.
-
-3. **Location on Local Server:**
-Copy the extracted project folder and paste it into the folder on your local server. For example, in XAMPP, the folder is usually xampp/htdocs.
-
-4. **Opening in the Editor:**
-Open your favorite code editor. We recommend Visual Studio Code.
-Right click on the project folder and select "Open with Code".
-
-5. **Installation of Dependencies:**
-Open the terminal in Visual Studio Code.
-Run the following command to install the necessary dependencies: npm install
-
-6. **Running Development Server:**
-Once the installation is complete, run the following command to start the development server: npm run dev
-
-7. **Project View:**
-Open your web browser and navigate to http://localhost:3000 or press Ctrl + http://localhost:3000 from your terminal, this will load the project in your browser and you can interact with it locally. Once the project has been displayed, the icons at the top right for navigation between sections of the home page may not initially be displayed. To do this, once the project is displayed, update and refresh the browser first and the icons will appear in their place. This is a small problem that I have to solve when I can.
-
+Cambia el idioma en la url de tu navegador a 'es' o 'en' para que se muestre la traducción del contenido de la página según el idioma seleccionado.
