@@ -45,6 +45,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Requisitos del servidor**: Para su correcto funcionamiento el proyecto debe ejecutarse desde un servidor. Por ejemplo, se recomienda utilizar XAMPP u otro servidor local para alojar la aplicación. También se debe tener instalado Node.js en tu PC.
 
+**Es importante tener en cuenta que este es un proyecto ficticio utilizado con fines educativos y prácticos.**
+
 ## Descripción
 
 Puedes acceder a la descripción de la instalación y configuración de i18n a través de este enlace: [Descripción de instalación y configuración de i18n](public/pdf/example-i18n.pdf).
